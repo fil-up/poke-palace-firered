@@ -1,0 +1,41 @@
+name: "Core Quiz (Engine-agnostic)"
+description: "Work in src/quiz without touching engine internals"
+title: "[Core]: "
+labels: ["core-quiz"]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+    validations:
+      required: true
+  - type: textarea
+    id: files
+    attributes:
+      label: Expected files to change
+      value: |
+        - src/quiz/
+        - include/quiz/ (if needed)
+        - generated/ (if generator output changes)
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      value: |
+        - [ ] Compiles
+        - [ ] No edits outside src/quiz unless explicitly required
+        - [ ] Unit-like validation via in-game steps or logs
+    validations:
+      required: true
+  - type: textarea
+    id: test
+    attributes:
+      label: How to test
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true

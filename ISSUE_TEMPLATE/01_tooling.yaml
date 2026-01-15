@@ -1,0 +1,32 @@
+name: "Tooling"
+description: "Validators, generators, Make targets"
+title: "[Tooling]: "
+labels: ["tooling"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / context
+    validations:
+      required: true
+  - type: textarea
+    id: deliverables
+    attributes:
+      label: Deliverables
+      value: |
+        - [ ] Tool/script added under /tools
+        - [ ] Documented CLI usage
+        - [ ] Wired into Makefile if needed
+        - [ ] Fails fast with helpful error messages
+    validations:
+      required: true
+  - type: textarea
+    id: test
+    attributes:
+      label: How to test
+      value: |
+        1.
+        2.
+        3.
+    validations:
+      required: true

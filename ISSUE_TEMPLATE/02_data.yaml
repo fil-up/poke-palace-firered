@@ -1,0 +1,39 @@
+name: "Data (Questions)"
+description: "Add or edit question banks (no engine changes)"
+title: "[Data]: "
+labels: ["data-only"]
+body:
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope / Route
+      description: e.g., ROUTE_1, VIRIDIAN_FOREST
+    validations:
+      required: true
+  - type: textarea
+    id: species
+    attributes:
+      label: Species banks touched
+      description: e.g., RATTATA, PIDGEY
+    validations:
+      required: true
+  - type: textarea
+    id: changes
+    attributes:
+      label: Changes
+      description: What question IDs were added/edited?
+    validations:
+      required: true
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Data checklist
+      options:
+        - label: All question IDs are unique and stable
+          required: true
+        - label: Prompt <= 120 chars; each choice <= 40 chars
+          required: true
+        - label: Exactly 4 choices per question
+          required: true
+        - label: `answer_index` is 0..3
+          required: true

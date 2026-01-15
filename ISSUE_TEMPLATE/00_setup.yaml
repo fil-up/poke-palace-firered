@@ -1,0 +1,27 @@
+name: "Setup"
+description: "Build, tooling, environment tasks"
+title: "[Setup]: "
+labels: ["setup"]
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What should be true when this is done?
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      value: |
+        - [ ] Repo builds
+        - [ ] ROM boots in emulator
+        - [ ] Notes/screenshots attached
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Anything to watch out for?

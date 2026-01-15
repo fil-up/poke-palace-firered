@@ -1,0 +1,48 @@
+name: "Engine Touch (High Risk)"
+description: "Any changes that interact with battle/encounter/save internals"
+title: "[Engine]: "
+labels: ["engine-touch"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ⚠️ High-risk work. Do not invent FireRed internals. Verify identifiers exist in repo.
+        Engine-touch code should be isolated to `src/quiz/quiz_hooks.c` whenever possible.
+  - type: textarea
+    id: hook
+    attributes:
+      label: Hook point (must be verified)
+      description: Provide the exact file + function you’ll hook into and how you verified it.
+      placeholder: |
+        File:
+        Function:
+        How verified (search term / call site):
+    validations:
+      required: true
+  - type: textarea
+    id: changes
+    attributes:
+      label: What will change
+    validations:
+      required: true
+  - type: textarea
+    id: test
+    attributes:
+      label: How to test (Route 1 steps)
+      value: |
+        1. Start a new game or load test save.
+        2. Go to Route 1 and trigger a wild encounter.
+        3. Confirm correct/wrong behavior matches DESIGN.md.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Safety checklist
+      options:
+        - label: I will not edit engine/battle files directly unless absolutely necessary
+          required: true
+        - label: I will keep engine glue in src/quiz/quiz_hooks.c
+          required: true
+        - label: If touching save data, I will add/maintain versioning + safe wipe-on-mismatch
+          required: true
