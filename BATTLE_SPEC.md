@@ -68,6 +68,7 @@
 
   * `ceil(userMaxHP / 2)`
   * i.e. `(maxHP + 1) / 2` using integer math
+  * all other move effects and damage are negated.
 * This guarantees 2 wrong answers = faint.
 
 That’s the whole “battle contract.”
