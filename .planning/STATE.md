@@ -56,6 +56,18 @@ Recent decisions affecting current work:
 **Stretch Goals:**
 - Gym battles: Each Pokemon asks TWO questions instead of one
 
+**Post-MVP Enhancements (Priority Order):**
+
+| ID | Feature | Size | Status | Description |
+|----|---------|------|--------|-------------|
+| ENH-G | Explanation A-to-advance | Tiny | ✓ DONE | Explanation persists until A pressed, no timed delay |
+| ENH-E | Encounter initiation label | Tiny | Pending | Show "Quiz Encounter" or "Catch Opportunity!" at battle start |
+| ENH-B | Progress X/Y display | Small | Pending | Show `Progress: X/Y` in move info panel during Fight select |
+| ENH-A | 5-line question box | Medium | Pending | Expand question box to 5 lines, never overlap command menu |
+| ENH-F | Capture animation on final correct | Medium | Pending | Final correct answer triggers guaranteed catch animation + boxing |
+| ENH-C | Route completion 25% encounters | Medium-High | Pending | Grass/water tracked separately per route; 25% rate when complete |
+| ENH-D | Type-based moves (no effects) | High | Pending | 2 moves per type, dual-type gets 2+2, no secondary effects ever |
+
 ### Blockers/Concerns
 
 None yet.
