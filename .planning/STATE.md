@@ -61,8 +61,8 @@ Recent decisions affecting current work:
 | ID | Feature | Size | Status | Description |
 |----|---------|------|--------|-------------|
 | ENH-G | Explanation A-to-advance | Tiny | ✓ DONE | Explanation persists until A pressed, no timed delay |
-| ENH-E | Encounter initiation label | Tiny | Pending | Show "Quiz Encounter" or "Catch Opportunity!" at battle start |
-| ENH-B | Progress X/Y display | Small | Pending | Show `Progress: X/Y` in move info panel during Fight select |
+| ENH-E | Encounter initiation label | Tiny | ✓ DONE | Show "Quiz Encounter!" or "Catch Opportunity!" at battle start |
+| ENH-B | Progress X/Y display | Small | ✓ DONE | PP area shows mastery/encounter progress; TYPE area shows encounter label |
 | ENH-A | 5-line question box | Medium | Pending | Expand question box to 5 lines, never overlap command menu |
 | ENH-F | Capture animation on final correct | Medium | Pending | Final correct answer triggers guaranteed catch animation + boxing |
 | ENH-C | Route completion 25% encounters | Medium-High | Pending | Grass/water tracked separately per route; 25% rate when complete |
@@ -74,9 +74,9 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-01-26
-Stopped at: Starting post-MVP enhancements
-Resume with: ENH-G (Explanation A-to-advance)
+Last session: 2026-01-27
+Stopped at: Completed ENH-B (Progress X/Y display)
+Resume with: ENH-A (5-line question box)
 
 ### What's Working
 - Build tools (CSV → C generation)
@@ -91,8 +91,33 @@ Resume with: ENH-G (Explanation A-to-advance)
 - Route 2 content (Nidoran-F, Nidoran-M: 5 questions each)
 - Gym leader mechanic (Brock: 2 questions per Pokemon, 3 for final)
 - Area pool aggregation (all prior area questions available for gym battles)
+- Encounter label ("Quiz Encounter!" / "Catch Opportunity!" at battle start)
+- Progress display (PP area shows "Progress X/Y", TYPE area shows encounter type label)
+- Debug quick start mode (auto-advance through intro, instant text)
 
 ### What's Next
 - **MVP COMPLETE!** Core quiz-driven gameplay loop is fully functional
 - Working through post-MVP enhancements (ENH-G → ENH-D)
 - Phases 11-12: Stretch goals (gym exam, trainer reinforcement) deferred
+
+## Debug Quick Start Mode
+
+A development feature to speed up testing by skipping the game intro sequence.
+
+**Activation:** Set `DEBUG_QUICK_START 1` in:
+- `pokefirered/src/new_game.c` - Sets up player name "RED", Charmander, flags
+- `pokefirered/src/oak_speech.c` - Auto-advances through all intro screens
+
+**What it does:**
+1. Auto-advances through Controls Guide (all 3 pages)
+2. Auto-advances through Pikachu intro (all pages)
+3. Sets instant text speed for Oak's dialogue
+4. Auto-selects BOY gender
+5. Auto-selects first default name for player and rival
+6. Auto-confirms name selections
+7. Sets player name to "RED" with level 5 Charmander
+8. Sets flags to bypass Oak stopping player on Route 1
+9. Gives 10 Poke Balls for testing captures
+10. Warps to Pallet Town near Route 1 exit
+
+**To disable:** Set `DEBUG_QUICK_START 0` in both files before release builds.
