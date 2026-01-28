@@ -16,6 +16,8 @@ Build a quiz-driven Pokémon FireRed ROM hack from current state (hardcoded sing
 - [x] **Phase 8: Route 1 Content** — Populate question banks
 - [x] **Phase 9: Viridian Forest Content** — Populate question banks
 - [x] **Phase 10: Route 2 & Pewter Content** — Complete MVP area coverage
+- [ ] **Phase ENH-C: Route Completion** — 25% encounter rate on terrain completion
+- [ ] **Phase ENH-D: Type-Based Moves** — 2 moves per type, no effects
 - [ ] **Phase 11: Gym Exam (Stretch)** — Topic mastery gate
 - [ ] **Phase 12: Trainer Reinforcement (Stretch)** — Spaced repetition
 
@@ -147,9 +149,39 @@ Build a quiz-driven Pokémon FireRed ROM hack from current state (hardcoded sing
 
 ---
 
+### Phase ENH-C: Route Completion
+**Goal**: Reduce encounter rate to 25% when all species in terrain type are CLEARED
+**Depends on**: Phase 10
+**Requirements**: ENH-C
+**Success Criteria**:
+  1. Encounter rate drops to 25% when all terrain species CLEARED
+  2. Each terrain type (grass, surf, fishing rods) tracked independently
+  3. Status banner on map entry shows progress per terrain type
+  4. Completion message when terrain reaches 100%
+**Plans**: 2 plans
+  - [ ] ENH-C-01-PLAN.md — Completion logic + rate reduction
+  - [ ] ENH-C-02-PLAN.md — Status banner + completion message
+
+---
+
+### Phase ENH-D: Type-Based Moves
+**Goal**: Give Pokemon moves based on type instead of level-up movesets
+**Depends on**: Phase ENH-C
+**Requirements**: ENH-D
+**Success Criteria**:
+  1. Each type has 6 moves (2 per tier: Weak/Medium/Strong)
+  2. Dual-type Pokemon get 2+2 moves from their types
+  3. Single-type Pokemon get 2 type moves + 2 random filler moves
+  4. Evolution stage determines move tier (Basic=Weak, Stage1=Medium, Stage2/Legend=Strong)
+  5. No secondary effects (flat 1000 damage on all moves)
+**Plans**: 1 plan
+  - [ ] ENH-D-01-PLAN.md — Type-based move assignment module
+
+---
+
 ### Phase 11: Gym Exam (Stretch)
 **Goal**: Topic mastery gate before gym leader
-**Depends on**: Phase 10
+**Depends on**: Phase ENH-D
 **Requirements**: V2-01
 **Success Criteria**:
   1. Entering Pewter Gym triggers section exam (X questions)
@@ -185,5 +217,7 @@ Build a quiz-driven Pokémon FireRed ROM hack from current state (hardcoded sing
 | 8. Route 1 Content | 1/1 | ✓ Complete | 2026-01-24 |
 | 9. Viridian Forest | 1/1 | ✓ Complete | 2026-01-26 |
 | 10. Pewter Content | 1/1 | ✓ Complete | 2026-01-26 |
+| ENH-C. Route Completion | 0/2 | In Progress | - |
+| ENH-D. Type-Based Moves | 0/? | Pending | - |
 | 11. Gym Exam | 0/? | Stretch | - |
 | 12. Trainer Reinforcement | 0/? | Stretch | - |
