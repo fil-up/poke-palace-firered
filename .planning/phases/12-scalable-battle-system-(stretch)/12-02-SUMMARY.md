@@ -67,7 +67,7 @@ Each task was committed atomically:
 2. **Task 2: Unify trainer multi-question selection source** - `9bee27563` (feat, combined with Task 1)
 3. **Task 3: Initialize quiz for ghost/special encounters** - `47d860582` (feat)
 
-**Plan metadata:** `PENDING` (docs: complete plan)
+**Plan metadata:** `9ee1031d0` (docs: complete plan)
 
 _Note: TDD tasks may have multiple commits (test → feat → refactor)_
 
