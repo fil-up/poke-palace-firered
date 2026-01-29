@@ -59,7 +59,7 @@ Each task was committed atomically:
 1. **Task 1: Add trainer-tier + legendary helpers** - `85c7c1610` (feat)
 2. **Task 2: Add evolution stage + line-length helpers** - `5a1842a65` (feat)
 
-**Plan metadata:** `PENDING` (docs: complete plan)
+**Plan metadata:** `960d8386c` (docs: complete plan)
 
 ## Files Created/Modified
 - `pokefirered/include/quiz/trainer_scaling.h` - Trainer scaling helper declarations
@@ -74,7 +74,7 @@ Each task was committed atomically:
 None - plan executed exactly as written.
 
 ## Issues Encountered
-- Plan metadata commit pending in root repo.
+None.
 
 ## User Setup Required
 
