@@ -45,11 +45,10 @@
 
 ## v2 Requirements (Deferred)
 
-- [ ] **V2-01**: Gym section exam mode (topic mastery gate before gym leader)
-- [ ] **V2-02**: Trainer reinforcement (spaced repetition on trainer Pokémon)
-- [ ] **V2-03**: Difficulty-based question selection within bank
-- [ ] **V2-04**: Statistics tracking (questions answered, accuracy rate)
-- [ ] **V2-05**: Multiple subject CSV support (swap question banks)
+- [ ] **V2-01**: Scalable trainer battle system (fixed questions per Pokémon; last Pokémon gets more)
+- [ ] **V2-02**: Difficulty-based question selection within bank
+- [ ] **V2-03**: Statistics tracking (questions answered, accuracy rate)
+- [ ] **V2-04**: Multiple subject CSV support (swap question banks)
 
 ---
 
@@ -77,5 +76,4 @@
 | CONT-01 | Phase 8: Route 1 Content |
 | CONT-02 | Phase 9: Viridian Forest Content |
 | CONT-03 | Phase 10: Route 2 / Pewter Content |
-| V2-01 | Stretch: Gym Exam |
-| V2-02 | Stretch: Trainer Reinforcement |
+| V2-01 | Stretch: Scalable Battle System |

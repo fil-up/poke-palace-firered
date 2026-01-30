@@ -43,8 +43,7 @@ A Pokémon FireRed ROM hack that replaces traditional battle mechanics with quiz
 
 <!-- Explicit boundaries. Includes reasoning to prevent re-adding. -->
 
-- Trainer reinforcement (spaced repetition) — Milestone 5, stretch goal only
-- Gym section exams — stretch goal, not required for MVP
+- Scalable trainer battle system — stretch goal, not required for MVP
 - Traditional battle mechanics — entire point is quiz replacement
 - Difficulty modes — MVP uses fixed question counts
 - Multiple save slots for quiz progress — single save is fine

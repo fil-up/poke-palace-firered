@@ -18,8 +18,7 @@ Build a quiz-driven Pokémon FireRed ROM hack from current state (hardcoded sing
 - [x] **Phase 10: Route 2 & Pewter Content** — Complete MVP area coverage
 - [ ] **Phase ENH-C: Route Completion** — 25% encounter rate on terrain completion
 - [ ] **Phase ENH-D: Type-Based Moves** — 2 moves per type, no effects
-- [ ] **Phase 11: Gym Exam (Stretch)** — Topic mastery gate
-- [ ] **Phase 12: Trainer Reinforcement (Stretch)** — Spaced repetition
+- [ ] **Phase 12: Scalable Battle System (Stretch)** — Trainer question scaling
 
 ## Phase Details
 
@@ -179,27 +178,18 @@ Build a quiz-driven Pokémon FireRed ROM hack from current state (hardcoded sing
 
 ---
 
-### Phase 11: Gym Exam (Stretch)
-**Goal**: Topic mastery gate before gym leader
-**Depends on**: Phase ENH-D
-**Requirements**: V2-01
+### Phase 12: Scalable Battle System (Stretch)
+**Goal**: Create a scalable battle system
+**Depends on**: Phase 10
+**Requirements**: TBD
 **Success Criteria**:
-  1. Entering Pewter Gym triggers section exam (X questions)
-  2. Pass threshold allows gym battle
-  3. Fail returns player outside gym
-**Plans**: (created by /gsd:plan-phase)
-
----
-
-### Phase 12: Trainer Reinforcement (Stretch)
-**Goal**: Spaced repetition via trainer battles
-**Depends on**: Phase 11
-**Requirements**: V2-02
-**Success Criteria**:
-  1. Trainer Pokémon send-out has 15% chance to trigger review question
-  2. Review pulls from already-mastered pool
-  3. Wrong answer applies damage penalty
-**Plans**: (created by /gsd:plan-phase)
+  1. Trainer-facing encounters ask a fixed number of questions per Pokémon
+  2. The last Pokémon in a battle asks more questions than the others (non-regular trainers)
+  3. Applies to trainer battles, gym trainers, and special encounters (e.g., Ghost Marowak)
+  4. Does not apply to wild encounters
+**Plans**: 2 plans
+  - [ ] 12-01-PLAN.md — Trainer scaling helpers + evolution analysis
+  - [ ] 12-02-PLAN.md — Integrate scaling + ghost encounter init
 
 ---
 
@@ -219,5 +209,4 @@ Build a quiz-driven Pokémon FireRed ROM hack from current state (hardcoded sing
 | 10. Pewter Content | 1/1 | ✓ Complete | 2026-01-26 |
 | ENH-C. Route Completion | 0/2 | In Progress | - |
 | ENH-D. Type-Based Moves | 0/? | Pending | - |
-| 11. Gym Exam | 0/? | Stretch | - |
-| 12. Trainer Reinforcement | 0/? | Stretch | - |
+| 12. Scalable Battle System | 0/? | Stretch | - |
