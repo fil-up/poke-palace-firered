@@ -9,10 +9,11 @@ See: .planning/PROJECT.md (updated 2026-01-24)
 
 ## Current Position
 
-Phase: 12 of 12 (Scalable Battle System - Stretch)
-Plan: 2 of 2 in current phase
-Status: Phase complete
-Last activity: 2026-01-29 — Completed 12-02-PLAN.md
+Phase: 13 of 13 (Uniform Move Rules)
+Plan: 1 of 2 in current phase
+Status: In progress
+Next Phase: Phase 13 — Make all moves the same from a damage/accuracy perspective, but retain only the move animation for cosmetic purposes (13-02 pending)
+Last activity: 2026-01-30 — Completed 13-01-PLAN.md
 
 Progress: [████████████████████] 100% (plans)
 
@@ -75,6 +76,10 @@ Recent decisions affecting current work:
 | ENH-F | Capture animation on final correct | Medium | ✓ DONE | Ball throw animation (3 shakes + click) on capture success |
 | ENH-C | Route completion 25% encounters | Medium-High | ✓ DONE | Grass/water tracked separately per route; 25% rate when complete |
 
+### Roadmap Evolution
+
+- Phase 13 added: Make all moves the same from a damage/accuracy perspective, but retain only the move animation for cosmetic purposes
+
 ### Blockers/Concerns
 
 **Minor: Command menu distortion (BUG-007 remnant)**
@@ -84,9 +89,9 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-01-29 00:00
-Stopped at: Completed 12-02-PLAN.md
-Resume with: None
+Last session: 2026-01-30 00:55
+Stopped at: Completed 13-01-PLAN.md
+Resume file: None
 
 ### What's Working
 - Build tools (CSV → C generation)

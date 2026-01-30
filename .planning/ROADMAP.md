@@ -19,6 +19,7 @@ Build a quiz-driven Pokémon FireRed ROM hack from current state (hardcoded sing
 - [ ] **Phase ENH-C: Route Completion** — 25% encounter rate on terrain completion
 - [ ] **Phase ENH-D: Type-Based Moves** — 2 moves per type, no effects
 - [ ] **Phase 12: Scalable Battle System (Stretch)** — Trainer question scaling
+- [ ] **Phase 13: Make all moves the same from a damage/accuracy perspective, but retain only the move animation for cosmetic purposes** — Uniform damage/accuracy with cosmetic-only animations
 
 ## Phase Details
 
@@ -193,6 +194,22 @@ Build a quiz-driven Pokémon FireRed ROM hack from current state (hardcoded sing
 
 ---
 
+### Phase 13: Make all moves the same from a damage/accuracy perspective, but retain only the move animation for cosmetic purposes
+**Goal:** Uniform damage/accuracy for all moves while preserving original move names and animations (cosmetic only), excluding Safari battles.
+**Depends on:** Phase 12
+**Plans:** 2 plans
+
+Plans:
+- [x] 13-01-PLAN.md — Uniform quiz rules + keep status moves selectable
+- [ ] 13-02-PLAN.md — Force opponent-target animations + single-hit visuals
+
+**Details:**
+- Use existing quiz hooks to normalize damage/accuracy/PP/type/crit behavior.
+- Keep all moves selectable while neutralizing real effects.
+- Force animations to target the opponent and clamp multi-hit visuals.
+
+---
+
 ## Progress
 
 | Phase | Plans Complete | Status | Completed |
@@ -210,3 +227,4 @@ Build a quiz-driven Pokémon FireRed ROM hack from current state (hardcoded sing
 | ENH-C. Route Completion | 0/2 | In Progress | - |
 | ENH-D. Type-Based Moves | 0/? | Pending | - |
 | 12. Scalable Battle System | 0/? | Stretch | - |
+| 13. Uniform Move Rules | 1/2 | In Progress | 2026-01-30 |
