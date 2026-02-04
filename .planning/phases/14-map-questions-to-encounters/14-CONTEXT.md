@@ -32,6 +32,9 @@ Questions are selected based on the current map's topic pool, NOT by species.
 
 ```yaml
 question_pool_by_map:
+  # ============================================
+  # SECTION 1: Pre-Brock (Intro topics)
+  # ============================================
   MAP_PALLET_TOWN:
     - { category: "Plan Provisions", topic: "Product Design" }
     - { category: "Manual Rates", topic: "Dental Claim Costs" }
@@ -40,6 +43,13 @@ question_pool_by_map:
     - { category: "Underwriting", topic: "General Principles" }
 
   MAP_ROUTE1:
+    - { category: "Plan Provisions", topic: "Product Design" }
+    - { category: "Manual Rates", topic: "Dental Claim Costs" }
+    - { category: "Plan Provisions", topic: "Life Insurance" }
+    - { category: "Plan Provisions", topic: "ACA Regulations" }
+    - { category: "Underwriting", topic: "General Principles" }
+
+  MAP_ROUTE2:  # AUTO-FILLED: inherits from Route 1
     - { category: "Plan Provisions", topic: "Product Design" }
     - { category: "Manual Rates", topic: "Dental Claim Costs" }
     - { category: "Plan Provisions", topic: "Life Insurance" }
@@ -63,10 +73,32 @@ question_pool_by_map:
     - { category: "Manual Rates", topic: "Medical Cost Trend" }
     - { category: "ASOPs", topic: "Data Quality" }
 
+  # ============================================
+  # SECTION 2: Pre-Misty (Medical/Dental focus)
+  # ============================================
+  MAP_ROUTE3:  # AUTO-FILLED: transition to Mt Moon topics
+    - { category: "Manual Rates", topic: "Medical Claim Costs" }
+    - { category: "Manual Rates", topic: "Medical Cost Trend" }
+    - { category: "ASOPs", topic: "Data Quality" }
+
   MAP_MT_MOON_1F:
     - { category: "Manual Rates", topic: "Medical Claim Costs" }
     - { category: "Manual Rates", topic: "Medical Cost Trend" }
     - { category: "ASOPs", topic: "Data Quality" }
+
+  MAP_MT_MOON_B1F:  # AUTO-FILLED: inherits from Mt Moon 1F
+    - { category: "Manual Rates", topic: "Medical Claim Costs" }
+    - { category: "Manual Rates", topic: "Medical Cost Trend" }
+    - { category: "ASOPs", topic: "Data Quality" }
+
+  MAP_MT_MOON_B2F:  # AUTO-FILLED: inherits from Mt Moon 1F
+    - { category: "Manual Rates", topic: "Medical Claim Costs" }
+    - { category: "Manual Rates", topic: "Medical Cost Trend" }
+    - { category: "ASOPs", topic: "Data Quality" }
+
+  MAP_ROUTE4:  # AUTO-FILLED: post-Mt Moon, transition to Cerulean
+    - { category: "Manual Rates", topic: "Medical Claim Costs" }
+    - { category: "Manual Rates", topic: "Dental Claim Costs" }
 
   MAP_CERULEAN_CITY:
     - { category: "Manual Rates", topic: "Dental Claim Costs" }
@@ -80,6 +112,15 @@ question_pool_by_map:
     - { category: "Manual Rates", topic: "Dental Claim Costs" }
     - { category: "Plan Provisions", topic: "Life Insurance" }
 
+  # ============================================
+  # SECTION 3: Pre-Surge (Pharmacy/Trend focus)
+  # ============================================
+  MAP_ROUTE5:  # AUTO-FILLED: inherits from Vermilion
+    - { category: "Manual Rates", topic: "Pharmacy Claim Costs" }
+
+  MAP_ROUTE6:  # AUTO-FILLED: inherits from Vermilion
+    - { category: "Manual Rates", topic: "Pharmacy Claim Costs" }
+
   MAP_VERMILION_CITY:
     - { category: "Manual Rates", topic: "Pharmacy Claim Costs" }
 
@@ -90,9 +131,20 @@ question_pool_by_map:
     - { category: "Manual Rates", topic: "Trend Analysis" }
     - { category: "Manual Rates", topic: "Medical Cost Trend" }
 
-  MAP_DIGLETTS_CAVE:
+  MAP_DIGLETTS_CAVE_B1F:  # AUTO-FILLED: main cave area
     - { category: "Manual Rates", topic: "Trend Analysis" }
     - { category: "Manual Rates", topic: "Medical Cost Trend" }
+
+  # ============================================
+  # SECTION 4: Pre-Erika (ASOPs/Underwriting intro)
+  # ============================================
+  MAP_ROUTE7:  # AUTO-FILLED: Celadon approach
+    - { category: "ASOPs", topic: "Risk Classification" }
+    - { category: "ASOPs", topic: "Credibility" }
+
+  MAP_ROUTE8:  # AUTO-FILLED: Lavender approach
+    - { category: "Underwriting", topic: "Selection" }
+    - { category: "Underwriting", topic: "Risk Assessment" }
 
   MAP_PEWTER_MUSEUM_1F:
     - { category: "Manual Rates", topic: "Life Insurance" }
@@ -113,23 +165,175 @@ question_pool_by_map:
     - { category: "Underwriting", topic: "Stop Loss" }
     - { category: "Underwriting", topic: "Funding Methods" }
 
+  MAP_ROCK_TUNNEL_B1F:  # AUTO-FILLED: inherits from Rock Tunnel 1F
+    - { category: "Underwriting", topic: "Stop Loss" }
+    - { category: "Underwriting", topic: "Funding Methods" }
+
   MAP_LAVENDER_TOWN:
     - { category: "Underwriting", topic: "Selection" }
+    - { category: "Underwriting", topic: "Risk Adjustment" }
+    - { category: "Underwriting", topic: "Risk Assessment" }
+
+  MAP_POKEMON_TOWER_1F:  # AUTO-FILLED: ghost Pokemon, inherits Lavender
+    - { category: "Underwriting", topic: "Selection" }
+    - { category: "Underwriting", topic: "Risk Adjustment" }
+  MAP_POKEMON_TOWER_2F:
+    - { category: "Underwriting", topic: "Selection" }
+    - { category: "Underwriting", topic: "Risk Adjustment" }
+  MAP_POKEMON_TOWER_3F:
+    - { category: "Underwriting", topic: "Selection" }
+    - { category: "Underwriting", topic: "Risk Assessment" }
+  MAP_POKEMON_TOWER_4F:
+    - { category: "Underwriting", topic: "Selection" }
+    - { category: "Underwriting", topic: "Risk Assessment" }
+  MAP_POKEMON_TOWER_5F:
+    - { category: "Underwriting", topic: "Risk Adjustment" }
+    - { category: "Underwriting", topic: "Risk Assessment" }
+  MAP_POKEMON_TOWER_6F:
+    - { category: "Underwriting", topic: "Risk Adjustment" }
+    - { category: "Underwriting", topic: "Risk Assessment" }
+  MAP_POKEMON_TOWER_7F:
     - { category: "Underwriting", topic: "Risk Adjustment" }
     - { category: "Underwriting", topic: "Risk Assessment" }
 
   MAP_CELADON_CITY:
     - { category: "Underwriting", topic: "Total Risk Analysis" }
 
-  MAP_SAFFRON_CITY:
+  # ============================================
+  # SECTION 5: Pre-Koga (Employee Benefits focus)
+  # ============================================
+  MAP_ROUTE12:  # AUTO-FILLED: inherits Fuchsia approach
     - { category: "Employee Benefits", topic: "Benefit Strategy" }
     - { category: "Employee Benefits", topic: "COB" }
+
+  MAP_ROUTE13:  # AUTO-FILLED
+    - { category: "Employee Benefits", topic: "Benefit Strategy" }
+    - { category: "Employee Benefits", topic: "COB" }
+
+  MAP_ROUTE14:  # AUTO-FILLED
+    - { category: "Employee Benefits", topic: "Benefit Strategy" }
+    - { category: "Plan Provisions", topic: "ACA Regulations" }
+
+  MAP_ROUTE15:  # AUTO-FILLED
+    - { category: "Employee Benefits", topic: "Benefit Strategy" }
     - { category: "Plan Provisions", topic: "ACA Regulations" }
 
   MAP_FUCHSIA_CITY:
     - { category: "Employee Benefits", topic: "Benefit Strategy" }
     - { category: "Employee Benefits", topic: "COB" }
     - { category: "Plan Provisions", topic: "ACA Regulations" }
+
+  MAP_SAFARI_ZONE_CENTER:  # AUTO-FILLED: Safari Zone inherits Fuchsia
+    - { category: "Employee Benefits", topic: "Benefit Strategy" }
+    - { category: "Employee Benefits", topic: "COB" }
+  MAP_SAFARI_ZONE_EAST:
+    - { category: "Employee Benefits", topic: "Benefit Strategy" }
+    - { category: "Employee Benefits", topic: "COB" }
+  MAP_SAFARI_ZONE_NORTH:
+    - { category: "Employee Benefits", topic: "Benefit Strategy" }
+    - { category: "Plan Provisions", topic: "ACA Regulations" }
+  MAP_SAFARI_ZONE_WEST:
+    - { category: "Employee Benefits", topic: "Benefit Strategy" }
+    - { category: "Plan Provisions", topic: "ACA Regulations" }
+
+  # ============================================
+  # SECTION 6: Pre-Sabrina (Advanced Benefits)
+  # ============================================
+  MAP_SAFFRON_CITY:
+    - { category: "Employee Benefits", topic: "Benefit Strategy" }
+    - { category: "Employee Benefits", topic: "COB" }
+    - { category: "Plan Provisions", topic: "ACA Regulations" }
+
+  # ============================================
+  # SECTION 7: Pre-Blaine (Cumulative review)
+  # ============================================
+  MAP_ROUTE19:  # AUTO-FILLED: water route, cumulative topics
+    - { category: "Manual Rates", topic: "Medical Claim Costs" }
+    - { category: "Underwriting", topic: "Experience Rating" }
+    - { category: "ASOPs", topic: "Credibility" }
+
+  MAP_ROUTE20:  # AUTO-FILLED: water route
+    - { category: "Manual Rates", topic: "Pharmacy Claim Costs" }
+    - { category: "Underwriting", topic: "Stop Loss" }
+    - { category: "ASOPs", topic: "Data Quality" }
+
+  MAP_ROUTE21_NORTH:  # AUTO-FILLED
+    - { category: "Plan Provisions", topic: "Product Design" }
+    - { category: "Underwriting", topic: "Funding Methods" }
+    - { category: "Employee Benefits", topic: "COB" }
+
+  MAP_ROUTE21_SOUTH:  # AUTO-FILLED
+    - { category: "Plan Provisions", topic: "Life Insurance" }
+    - { category: "Underwriting", topic: "Selection" }
+    - { category: "Employee Benefits", topic: "Benefit Strategy" }
+
+  MAP_SEAFOAM_ISLANDS_1F:  # AUTO-FILLED: Articuno dungeon
+    - { category: "Manual Rates", topic: "Trend Analysis" }
+    - { category: "Underwriting", topic: "Risk Assessment" }
+  MAP_SEAFOAM_ISLANDS_B1F:
+    - { category: "Manual Rates", topic: "Trend Analysis" }
+    - { category: "Underwriting", topic: "Risk Assessment" }
+  MAP_SEAFOAM_ISLANDS_B2F:
+    - { category: "Manual Rates", topic: "Medical Claim Costs" }
+    - { category: "Underwriting", topic: "Total Risk Analysis" }
+  MAP_SEAFOAM_ISLANDS_B3F:
+    - { category: "Manual Rates", topic: "Medical Claim Costs" }
+    - { category: "Underwriting", topic: "Total Risk Analysis" }
+  MAP_SEAFOAM_ISLANDS_B4F:
+    - { category: "ASOPs", topic: "Credibility" }
+    - { category: "Underwriting", topic: "Total Risk Analysis" }
+
+  MAP_CINNABAR_ISLAND:  # AUTO-FILLED: city hub
+    - { category: "Plan Provisions", topic: "Product Design" }
+    - { category: "Manual Rates", topic: "Medical Claim Costs" }
+    - { category: "Underwriting", topic: "General Principles" }
+
+  MAP_POKEMON_MANSION_1F:  # AUTO-FILLED: Moltres dungeon
+    - { category: "Underwriting", topic: "Risk Assessment" }
+    - { category: "Underwriting", topic: "Total Risk Analysis" }
+  MAP_POKEMON_MANSION_2F:
+    - { category: "Underwriting", topic: "Risk Assessment" }
+    - { category: "Underwriting", topic: "Selection" }
+  MAP_POKEMON_MANSION_3F:
+    - { category: "Underwriting", topic: "Risk Adjustment" }
+    - { category: "Underwriting", topic: "Selection" }
+  MAP_POKEMON_MANSION_B1F:
+    - { category: "Underwriting", topic: "Risk Adjustment" }
+    - { category: "Underwriting", topic: "Total Risk Analysis" }
+
+  # ============================================
+  # SECTION 8: Pre-Champion (Final challenge - all topics)
+  # ============================================
+  MAP_ROUTE22:  # AUTO-FILLED: Victory Road approach
+    - { category: "Plan Provisions", topic: "Product Design" }
+    - { category: "Manual Rates", topic: "Medical Claim Costs" }
+    - { category: "Underwriting", topic: "General Principles" }
+    - { category: "Employee Benefits", topic: "Benefit Strategy" }
+
+  MAP_ROUTE23:  # AUTO-FILLED: Victory Road approach
+    - { category: "Plan Provisions", topic: "ACA Regulations" }
+    - { category: "Manual Rates", topic: "Trend Analysis" }
+    - { category: "Underwriting", topic: "Experience Rating" }
+    - { category: "ASOPs", topic: "Credibility" }
+
+  MAP_VICTORY_ROAD_1F:  # AUTO-FILLED: final dungeon
+    - { category: "Underwriting", topic: "Funding Methods" }
+    - { category: "Underwriting", topic: "Stop Loss" }
+    - { category: "ASOPs", topic: "Risk Classification" }
+  MAP_VICTORY_ROAD_2F:
+    - { category: "Underwriting", topic: "Selection" }
+    - { category: "Underwriting", topic: "Risk Assessment" }
+    - { category: "ASOPs", topic: "Data Quality" }
+  MAP_VICTORY_ROAD_3F:
+    - { category: "Underwriting", topic: "Risk Adjustment" }
+    - { category: "Underwriting", topic: "Total Risk Analysis" }
+    - { category: "ASOPs", topic: "Actuarial Communications" }
+
+  MAP_INDIGO_PLATEAU_EXTERIOR:  # AUTO-FILLED: E4 approach
+    - { category: "Employee Benefits", topic: "Benefit Strategy" }
+    - { category: "Plan Provisions", topic: "Product Design" }
+    - { category: "Manual Rates", topic: "Medical Claim Costs" }
+    - { category: "Underwriting", topic: "Total Risk Analysis" }
 
 gyms_by_map:
   MAP_PEWTER_CITY_GYM:
@@ -179,6 +383,28 @@ gyms_by_map:
       - { category: "Underwriting", topic: "Risk Adjustment" }
       - { category: "Underwriting", topic: "Risk Assessment" }
       - { category: "Underwriting", topic: "Total Risk Analysis" }
+
+  MAP_CINNABAR_ISLAND_GYM:  # AUTO-FILLED: Gym 7 - cumulative review
+    gym: 7
+    mastery_pool:
+      - { category: "Plan Provisions", topic: "Product Design" }
+      - { category: "Manual Rates", topic: "Medical Claim Costs" }
+      - { category: "Manual Rates", topic: "Trend Analysis" }
+      - { category: "ASOPs", topic: "Credibility" }
+      - { category: "Underwriting", topic: "Experience Rating" }
+      - { category: "Employee Benefits", topic: "Benefit Strategy" }
+
+  MAP_VIRIDIAN_CITY_GYM:  # AUTO-FILLED: Gym 8 (Giovanni) - all advanced topics
+    gym: 8
+    mastery_pool:
+      - { category: "Underwriting", topic: "Funding Methods" }
+      - { category: "Underwriting", topic: "Stop Loss" }
+      - { category: "Underwriting", topic: "Selection" }
+      - { category: "Underwriting", topic: "Risk Assessment" }
+      - { category: "Underwriting", topic: "Risk Adjustment" }
+      - { category: "Underwriting", topic: "Total Risk Analysis" }
+      - { category: "ASOPs", topic: "Risk Classification" }
+      - { category: "ASOPs", topic: "Actuarial Communications" }
 
 elite_four:
   - member: "E4_1"
