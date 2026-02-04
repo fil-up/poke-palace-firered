@@ -20,6 +20,7 @@ Build a quiz-driven Pokémon FireRed ROM hack from current state (hardcoded sing
 - [ ] **Phase ENH-D: Type-Based Moves** — 2 moves per type, no effects
 - [ ] **Phase 12: Scalable Battle System (Stretch)** — Trainer question scaling
 - [x] **Phase 13: Make all moves the same from a damage/accuracy perspective, but retain only the move animation for cosmetic purposes** — Uniform damage/accuracy with cosmetic-only animations
+- [ ] **Phase 14: Map questions to all encounters and assign question pool for trainers/gyms** — Update question bank with encounter mappings
 
 ## Phase Details
 
@@ -210,6 +211,31 @@ Plans:
 
 ---
 
+### Phase 14: Map questions to all encounters and assign question pool for trainers/gyms
+
+**Goal:** Expand question bank from 12 species to full 130 wild encounter species coverage, with dynamic gym pool aggregation
+**Depends on:** Phase 13
+**Requirements:** BANK-02, BANK-03
+**Success Criteria:**
+  1. All 130 wild encounter species have mapped question banks
+  2. sAllQuizBanks array auto-generated (not manually maintained)
+  3. Gym battles pull from dynamic area pools based on prior traversed maps
+**Plans:** 3 plans
+
+Plans:
+- [ ] 14-01-PLAN.md — Expand species_map.json with all wild encounter species
+- [ ] 14-02-PLAN.md — Auto-generate sAllQuizBanks and increase pool limit
+- [ ] 14-03-PLAN.md — Dynamic area pool building for gym battles
+
+**Details:**
+- Create inventory_species.py to extract 130 species from wild_encounters.json
+- Assign 5 questions per species from 727 available questions
+- Modify build_questions.py to auto-generate gAllQuizBanks[] array
+- Increase QUIZ_POOL_MAX_QUESTIONS to 350 for larger gym pools
+- Replace hardcoded Quiz_BuildAreaPool() with gym-to-prior-areas lookup tables
+
+---
+
 ## Progress
 
 | Phase | Plans Complete | Status | Completed |
@@ -228,3 +254,4 @@ Plans:
 | ENH-D. Type-Based Moves | 0/? | Pending | - |
 | 12. Scalable Battle System | 0/? | Stretch | - |
 | 13. Uniform Move Rules | 2/2 | ✓ Complete | 2026-01-30 |
+| 14. Map Questions to Encounters | 0/3 | Pending | - |
