@@ -9,11 +9,11 @@ See: .planning/PROJECT.md (updated 2026-01-24)
 
 ## Current Position
 
-Phase: 13 of 13 (Uniform Move Rules)
-Plan: 2 of 2 in current phase
-Status: Phase complete
-Next Phase: None — Phase 13 complete
-Last activity: 2026-01-30 — Completed 13-02-PLAN.md
+Phase: 14 of 14 (Section-Based Topic Pools)
+Plan: 0 of 5 in current phase
+Status: Phase planned
+Next: Execute Phase 14 (5 plans in 3 waves)
+Last activity: 2026-02-04 — Created Phase 14 plans
 
 Progress: [████████████████████] 100% (plans)
 
@@ -79,6 +79,7 @@ Recent decisions affecting current work:
 ### Roadmap Evolution
 
 - Phase 13 added: Make all moves the same from a damage/accuracy perspective, but retain only the move animation for cosmetic purposes
+- Phase 14 added: Map questions to all encounters and assign question pool for trainers/gyms
 
 ### Blockers/Concerns
 

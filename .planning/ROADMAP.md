@@ -20,7 +20,7 @@ Build a quiz-driven Pokémon FireRed ROM hack from current state (hardcoded sing
 - [ ] **Phase ENH-D: Type-Based Moves** — 2 moves per type, no effects
 - [ ] **Phase 12: Scalable Battle System (Stretch)** — Trainer question scaling
 - [x] **Phase 13: Make all moves the same from a damage/accuracy perspective, but retain only the move animation for cosmetic purposes** — Uniform damage/accuracy with cosmetic-only animations
-- [ ] **Phase 14: Map questions to all encounters and assign question pool for trainers/gyms** — Update question bank with encounter mappings
+- [ ] **Phase 14: Section-Based Topic Pools** — Map-based topics with re-capturable species per section
 
 ## Phase Details
 
@@ -211,28 +211,41 @@ Plans:
 
 ---
 
-### Phase 14: Map questions to all encounters and assign question pool for trainers/gyms
+### Phase 14: Section-Based Topic Pools with Re-Capturable Species
 
-**Goal:** Expand question bank from 12 species to full 130 wild encounter species coverage, with dynamic gym pool aggregation
+**Goal:** Implement section-based question system where topics are tied to map locations, and species can be re-captured when encountered in new sections
 **Depends on:** Phase 13
-**Requirements:** BANK-02, BANK-03
+**Requirements:** TBD
 **Success Criteria:**
-  1. All 130 wild encounter species have mapped question banks
-  2. sAllQuizBanks array auto-generated (not manually maintained)
-  3. Gym battles pull from dynamic area pools based on prior traversed maps
-**Plans:** 3 plans
+  1. Questions selected by map's topic pool, not by species
+  2. Game divided into 8 sections (gym-gated progression)
+  3. Species mastery/cleared tracked per-section (Rattata cleared in Section 1 can be re-captured in Section 7)
+  4. Gym battles test cumulative topics from their section
+**Plans:** 5 plans in 3 waves
 
 Plans:
-- [ ] 14-01-PLAN.md — Expand species_map.json with all wild encounter species
-- [ ] 14-02-PLAN.md — Auto-generate sAllQuizBanks and increase pool limit
-- [ ] 14-03-PLAN.md — Dynamic area pool building for gym battles
+- [ ] 14-01-PLAN.md — Section infrastructure (constants, map→section mapping, JSON config)
+- [ ] 14-02-PLAN.md — Save data expansion (QuizSaveDataV2, section-aware accessors)
+- [ ] 14-03-PLAN.md — Topic pool build tools (generate topic-indexed pools)
+- [ ] 14-04-PLAN.md — Quiz logic conversion (topic-based selection, section mastery)
+- [ ] 14-05-PLAN.md — Wild encounter re-capture (section-aware filtering)
 
 **Details:**
-- Create inventory_species.py to extract 130 species from wild_encounters.json
-- Assign 5 questions per species from 727 available questions
-- Modify build_questions.py to auto-generate gAllQuizBanks[] array
-- Increase QUIZ_POOL_MAX_QUESTIONS to 350 for larger gym pools
-- Replace hardcoded Quiz_BuildAreaPool() with gym-to-prior-areas lookup tables
+Section-based system:
+- Section 1 (→Brock): Plan Provisions, General Principles
+- Section 2 (→Misty): Medical/Dental Claim Costs, Trend
+- Section 3 (→Lt. Surge): Pharmacy, Trend Analysis
+- Section 4 (→Erika): ASOPs topics
+- Section 5 (→Koga): Experience Rating, Funding, Stop Loss
+- Section 6 (→Sabrina): Selection, Risk topics
+- Section 7 (→Blaine): Late game topics
+- Section 8 (→Giovanni/E4): Mastery
+
+Key changes:
+- New map_topics.json: Maps → Section → Topics
+- Save data: speciesCleared[section][species] instead of speciesCleared[species]
+- Quiz logic: Select questions from current map's topic pool
+- Re-capture: Same species in new section = new capture opportunity with new topics
 
 ---
 
@@ -254,4 +267,4 @@ Plans:
 | ENH-D. Type-Based Moves | 0/? | Pending | - |
 | 12. Scalable Battle System | 0/? | Stretch | - |
 | 13. Uniform Move Rules | 2/2 | ✓ Complete | 2026-01-30 |
-| 14. Map Questions to Encounters | 0/3 | Pending | - |
+| 14. Section-Based Topic Pools | 0/5 | Planned | - |
