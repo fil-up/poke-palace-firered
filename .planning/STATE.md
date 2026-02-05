@@ -5,30 +5,31 @@
 See: .planning/PROJECT.md (updated 2026-01-24)
 
 **Core value:** Quiz-driven gameplay loop must work end-to-end
-**Current focus:** Post-MVP Enhancements complete (ENH-G through ENH-C)
+**Current focus:** Phase 15 - Per-Species Questions with Unique Location Species
 
 ## Current Position
 
-Phase: 14 of 14 (Section-Based Topic Pools)
-Plan: 4 of 5 in current phase
-Status: In progress
-Next: Execute Phase 14-05 (testing and verification)
-Last activity: 2026-02-04 — Completed 14-04-PLAN.md (Topic-Based Question Selection)
+Phase: 15 of 15 (Per-Species Questions)
+Plan: 2 of 4 complete (15-03, 15-04 done; 15-01, 15-02 partially done)
+Status: Core code changes complete, content expansion pending
+Next: Complete encounter table redesign and species-question assignment
+Last activity: 2026-02-05 — Completed Phase 15 code changes (save system, quiz logic)
 
-Progress: [████████████████████] 100% (plans) | 14-04 complete
+Progress: [██████████░░░░░░░░░░] 50% (core code done, content pending)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 18
+- Total plans completed: 25
 - Average duration: N/A
-- Total execution time: 0 hours
+- Total execution time: ~2 hours for Phase 14
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 14 | 5 | ~2h | ~24min |
+| 15 | 2 | ~1h | ~30min |
 
 ## Accumulated Context
 
@@ -40,112 +41,101 @@ Recent decisions affecting current work:
 - [Init]: Use CSV → Python → C tables pipeline
 - [Init]: Extend SaveBlock1 for quiz data
 - [Init]: B_WIN_QUIZ (ID 25) for question display
-- [12-01]: Use explicit gym trainer ID list from gym map scripts
-- [12-01]: Use explicit legendary species list for overrides
-- [14-01]: 8 sections (1-indexed) aligned with gym progression
-- [14-01]: Quiz_GetSectionForMap() switch covers all game maps
-- [14-02]: QuizSaveDataV2 (386 bytes) uses unused_348C space
-- [14-02]: Section-aware accessors with Quiz_GetCurrentSection()
-- [14-03]: Topic pools generated from map_topics.json via build_questions.py
-- [14-04]: Wild encounters use Quiz_GetRandomQuestionForMap, fallback to species bank
-- [14-04]: Gym battles use Quiz_GetGymConfig for gym-specific mastery pools
-- [14-04]: currentQuestionIndex == 0xFF indicates topic pool source (skip mastery update)
+- [14-01]: 8 sections aligned with gym progression
+- [14-02]: QuizSaveDataV2 in unused_348C (386 bytes)
+- [14-03]: Topic pools generated in questions_gen.c
+- [14-04]: Quiz_GetRandomQuestionForMap for question selection
+- [14-05]: Derive CAPTURE_PENDING from mastery count >= 5
+- [15-03]: Global species tracking in QuizSaveDataV2 (V3 format)
+- [15-04]: Species bank selection via Quiz_GetBank(species)
+
+### Phase 15 Summary (In Progress)
+
+**Per-Species Questions with Unique Location Species**
+
+1. **15-01**: Encounter table redesign — PARTIAL
+   - Species-location mapping document created (15-SPECIES-MAP.md)
+   - Sections 1-2 encounter tables updated
+   - Remaining sections pending content expansion
+
+2. **15-02**: Question-to-species assignment — PARTIAL
+   - species_map.json updated for Section 1-2 species
+   - Remaining species pending
+
+3. **15-03**: Save system simplification — COMPLETE
+   - QuizSaveDataV2 updated to V3 format (global tracking)
+   - speciesCleared[20] as bit array (160 species)
+   - masteryCount[152] per species
+   - Removed section-aware accessors, added global equivalents
+
+4. **15-04**: Quiz logic reversion — COMPLETE
+   - Wild encounters use Quiz_GetBank(species) directly
+   - Single-question trainers use species bank with pool fallback
+   - Quiz_GetMasteryProgress uses global mastery count
+   - Quiz_OnMoveConfirmed updates global mastery
+   - Quiz_GetEncounterType fixed for multi-question trainer progress display
+
+### Bug Fixes Applied
+
+| Bug | Issue | Fix |
+|-----|-------|-----|
+| Mastery not incrementing | currentQuestionIndex == 0xFF skipped update | Always increment count using currentSection |
+| Progress stuck at 0/5 | Old bitmask counting logic | Return count directly, show X/5 |
+| Capture not triggering | CAPTURE_PENDING not persisted | Derive from masteryMask >= 5 |
+| Map name typos | MAP_S_S_ANNE_1F, MAP_PEWTER_MUSEUM_1F | Fixed to match map_groups.h constants |
+| Symbol duplication | Quiz_GetMasteryCount defined twice | Removed wrapper functions, use macros in quiz.h |
+| Implicit declaration | Functions called before definition | Added forward declarations |
+| Trainer progress display | Multi-question trainers showed mastery | Fixed Quiz_GetEncounterType to use isGymLeader flag |
 
 ### Pending Todos
 
-**Todo Queue:** 0 items in `.planning/todos/pending/`
+**Todo Queue:** 0 items
 
-**Bug Fixes (Priority):**
-
-| ID | Issue | Status | Description |
-|----|-------|--------|-------------|
-| BUG-001 | Capture quiz healthbox overlay | ✓ DONE | Subsequent questions covered by opponent name/HP window |
-| BUG-002 | Question text cutoff | ✓ DONE | Fixed OBJ window masking + line width increased to 42 chars |
-| BUG-003 | Non-attacking moves | ✓ DONE | Remove all non-damage moves from the game entirely |
-| BUG-004 | Secondary effects & status moves | ✓ DONE | Disable secondary effects; Pokemon should only use damage moves |
-| BUG-005 | Multi-Pokemon trainer questions | ✓ DONE | Questions should be per-Pokemon, not per-battle; each Pokemon shows its species' questions |
-| BUG-006 | Abilities & type immunities | ✓ DONE | Disable special ability checks; ignore type immunities (e.g., Ghost hit by Normal) |
-| BUG-007 | Quiz box visual distortion | ~PARTIAL | Cleared BG1 tilemap before quiz draw; main scene fixed, minor command menu distortion remains |
-| BUG-008 | Question window behind healthbox | ✓ DONE | Set BG1 priority to 0 before showing quiz; window now appears in front |
-| BUG-009 | Question text cutoff | ✓ DONE | Increased quiz window height from 10 to 12 tiles |
-| BUG-010 | Capture nickname freeze (party full) | OPEN | Capture success freezes after choosing "No" on nickname prompt when party is full |
-
-**Stretch Goals:**
-- Gym battles: Each Pokemon asks TWO questions instead of one
-
-**Post-MVP Enhancements (Priority Order):**
-
-| ID | Feature | Size | Status | Description |
-|----|---------|------|--------|-------------|
-| ENH-G | Explanation A-to-advance | Tiny | ✓ DONE | Explanation persists until A pressed, no timed delay |
-| ENH-E | Encounter initiation label | Tiny | ✓ DONE | Show "Quiz Encounter!" or "Catch Opportunity!" at battle start |
-| ENH-B | Progress X/Y display | Small | ✓ DONE | PP area shows mastery/encounter progress; TYPE area shows encounter label |
-| ENH-A | 5-line question box | Medium | ✓ DONE | Expand question box to 5 lines, never overlap command menu |
-| ENH-F | Capture animation on final correct | Medium | ✓ DONE | Ball throw animation (3 shakes + click) on capture success |
-| ENH-C | Route completion 25% encounters | Medium-High | ✓ DONE | Grass/water tracked separately per route; 25% rate when complete |
-
-### Roadmap Evolution
-
-- Phase 13 added: Make all moves the same from a damage/accuracy perspective, but retain only the move animation for cosmetic purposes
-- Phase 14 added: Map questions to all encounters and assign question pool for trainers/gyms
+**Remaining Phase 15 Work:**
+- Complete encounter table redesign for Sections 3-8
+- Assign all 727 questions to species in species_map.json
+- Regenerate questions_gen.c with full species banks
 
 ### Blockers/Concerns
 
-**Minor: Command menu distortion (BUG-007 remnant)**
-- Quiz displays correctly at top of screen
-- Some visual distortion in FIGHT/BAG/POKEMON/RUN section at bottom
-- Low priority - gameplay functional, cosmetic only
-- Pending in-game verification for Phase 13-02 animation targeting and multihit visuals
+None - Core code changes complete, ready for content expansion
 
 ## Session Continuity
 
-Last session: 2026-02-04
-Stopped at: Completed 14-04-PLAN.md (Topic-Based Question Selection)
+Last session: 2026-02-05
+Stopped at: Phase 15 code changes complete (15-03, 15-04)
 Resume file: None
 
 ### What's Working
 - Build tools (CSV → C generation)
 - Question bank integration
-- Save persistence (mastery tracking)
-- Core loop (questions don't repeat, state transitions)
-- Capture flow (CAPTURE_PENDING → sequential quiz → party add)
-- Capture animation (Master Ball throw on quiz mastery - 3 wiggles + success)
-- Encounter filter (cleared species skipped, reroll capped at 10)
-- UI polish (explanations shown after correct answers)
-- Route 1 content (Rattata: 5 questions, Pidgey: 5 questions)
-- Viridian Forest content (Caterpie, Weedle, Metapod, Kakuna, Pikachu: 5 questions each)
-- Route 2 content (Nidoran-F, Nidoran-M: 5 questions each)
-- Gym leader mechanic (Brock: 2 questions per Pokemon, 3 for final)
-- Area pool aggregation (all prior area questions available for gym battles)
-- Encounter label ("Quiz Encounter!" / "Catch Opportunity!" at battle start)
-- Progress display (PP area shows "Progress X/Y", TYPE area shows encounter type label)
-- Route completion (25% encounter rate when all terrain species cleared, status banner on map entry)
-- Quiz window polish (semi-transparent with decorative border, proper z-order)
-- Debug quick start mode (auto-advance through intro, instant text)
+- Save persistence (global mastery tracking)
+- Core loop (questions from species banks)
+- Capture flow (5 correct → capture mode)
+- Capture animation (Master Ball throw on quiz mastery)
+- Encounter filter (cleared species skipped globally)
+- UI polish (explanations, progress X/5)
+- Route completion (25% rate when terrain species cleared)
+- Per-species questions (from species bank)
+- Multi-question trainer progress display (X/N for gym trainers, leaders, etc.)
 
 ### What's Next
-- **MVP COMPLETE!** Core quiz-driven gameplay loop is fully functional
-- **All post-MVP enhancements complete** (ENH-G through ENH-C)
-- Phase 12: Stretch goal (scalable battle system) complete
+- Complete encounter table redesign (Sections 3-8 in wild_encounters.json)
+- Expand species_map.json with all 150+ species and question assignments
+- Regenerate questions_gen.c with full species banks
+- Test capture flow with new species
 
-## Debug Quick Start Mode
+### Phase 15 Architecture
 
-A development feature to speed up testing by skipping the game intro sequence.
+**Per-Species Questions with Unique Location Species**
 
-**Activation:** Set `DEBUG_QUICK_START 1` in:
-- `pokefirered/src/new_game.c` - Sets up player name "RED", Charmander, flags
-- `pokefirered/src/oak_speech.c` - Auto-advances through all intro screens
+Key architectural changes implemented:
+- Each species appears in one primary location
+- Questions selected from species-specific bank via Quiz_GetBank()
+- Global mastery tracking (removed section awareness)
+- Save data: speciesCleared[20] bits + masteryCount[152] per species
 
-**What it does:**
-1. Auto-advances through Controls Guide (all 3 pages)
-2. Auto-advances through Pikachu intro (all pages)
-3. Sets instant text speed for Oak's dialogue
-4. Auto-selects BOY gender
-5. Auto-selects first default name for player and rival
-6. Auto-confirms name selections
-7. Sets player name to "RED" with level 5 Charmander
-8. Sets flags to bypass Oak stopping player on Route 1
-9. Gives 10 Poke Balls for testing captures
-10. Warps to Pallet Town near Route 1 exit
-
-**To disable:** Set `DEBUG_QUICK_START 0` in both files before release builds.
+Code changes:
+- global.h: QuizSaveDataV2 simplified to V3 format
+- quiz.h: Global accessor declarations, removed section functions
+- quiz.c: Global mastery functions, species bank selection, forward declarations
