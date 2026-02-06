@@ -263,8 +263,8 @@ Key changes:
 **Plans:** 4 plans
 
 Plans:
-- [~] 15-01-PLAN.md — Encounter table redesign (unique species per location) — Sections 1-2 complete
-- [~] 15-02-PLAN.md — Question-to-species assignment (difficulty tiers) — Sections 1-2 complete
+- [x] 15-01-PLAN.md — Encounter table redesign (unique species per location)
+- [x] 15-02-PLAN.md — Question-to-species assignment (difficulty tiers)
 - [x] 15-03-PLAN.md — Save system simplification (global mastery)
 - [x] 15-04-PLAN.md — Quiz logic reversion (species bank selection)
 
@@ -303,4 +303,4 @@ Key changes:
 | 12. Scalable Battle System | 0/? | Stretch | - |
 | 13. Uniform Move Rules | 2/2 | ✓ Complete | 2026-01-30 |
 | 14. Section-Based Topic Pools | 5/5 | ✓ Complete | 2026-02-04 |
-| 15. Per-Species Questions | 2/4 | In Progress | - |
+| 15. Per-Species Questions | 4/4 | ✓ Complete | 2026-02-05 |

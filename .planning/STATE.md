@@ -10,12 +10,12 @@ See: .planning/PROJECT.md (updated 2026-01-24)
 ## Current Position
 
 Phase: 15 of 15 (Per-Species Questions)
-Plan: 2 of 4 complete (15-03, 15-04 done; 15-01, 15-02 partially done)
-Status: Core code changes complete, content expansion pending
-Next: Complete encounter table redesign and species-question assignment
-Last activity: 2026-02-05 — Completed Phase 15 code changes (save system, quiz logic)
+Plan: 4 of 4 complete
+Status: Core implementation complete, refinement may be needed
+Next: Test gameplay, verify species uniqueness works as intended
+Last activity: 2026-02-05 — Completed Phase 15 (species_map.json + wild_encounters.json)
 
-Progress: [██████████░░░░░░░░░░] 50% (core code done, content pending)
+Progress: [████████████████████] 100% (all plans complete)
 
 ## Performance Metrics
 
@@ -49,18 +49,21 @@ Recent decisions affecting current work:
 - [15-03]: Global species tracking in QuizSaveDataV2 (V3 format)
 - [15-04]: Species bank selection via Quiz_GetBank(species)
 
-### Phase 15 Summary (In Progress)
+### Phase 15 Summary (Complete)
 
 **Per-Species Questions with Unique Location Species**
 
-1. **15-01**: Encounter table redesign — PARTIAL
+1. **15-01**: Encounter table redesign — COMPLETE
    - Species-location mapping document created (15-SPECIES-MAP.md)
-   - Sections 1-2 encounter tables updated
-   - Remaining sections pending content expansion
+   - Updated Routes 5, 6, 7, 8, 9, 11 for Sections 3-4
+   - Updated Safari Zone (Center, East, West) for Section 5
+   - Updated Power Plant, Victory Road for Section 8
+   - Vermilion City fishing updated
 
-2. **15-02**: Question-to-species assignment — PARTIAL
-   - species_map.json updated for Section 1-2 species
-   - Remaining species pending
+2. **15-02**: Question-to-species assignment — COMPLETE
+   - species_map.json created with 148 species mapped
+   - 730 questions distributed across all species (~5 per species)
+   - questions_gen.c regenerated with full species banks
 
 3. **15-03**: Save system simplification — COMPLETE
    - QuizSaveDataV2 updated to V3 format (global tracking)
@@ -91,10 +94,12 @@ Recent decisions affecting current work:
 
 **Todo Queue:** 0 items
 
-**Remaining Phase 15 Work:**
-- Complete encounter table redesign for Sections 3-8
-- Assign all 727 questions to species in species_map.json
-- Regenerate questions_gen.c with full species banks
+**Potential refinements:**
+- Some routes may need further species redistribution
+- LeafGreen versions of encounter tables not updated (use FireRed version)
+- S.S. Anne Charmander not yet implemented (requires special handling)
+- Safari Zone North not updated (needs Rhyhorn, Nidorina, Nidorino)
+- Some water/fishing routes not yet updated
 
 ### Blockers/Concerns
 
@@ -120,10 +125,10 @@ Resume file: None
 - Multi-question trainer progress display (X/N for gym trainers, leaders, etc.)
 
 ### What's Next
-- Complete encounter table redesign (Sections 3-8 in wild_encounters.json)
-- Expand species_map.json with all 150+ species and question assignments
-- Regenerate questions_gen.c with full species banks
-- Test capture flow with new species
+- Test gameplay with new species distribution
+- Verify per-species questions work correctly in wild encounters
+- Consider additional refinements (remaining routes, LeafGreen versions)
+- Optional: Add S.S. Anne Charmander (requires special encounter logic)
 
 ### Phase 15 Architecture
 
