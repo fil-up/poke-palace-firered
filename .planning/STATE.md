@@ -13,7 +13,7 @@ Phase: 15 of 15 (Per-Species Questions)
 Plan: 4 of 4 complete
 Status: Core implementation complete, refinement may be needed
 Next: Test gameplay, verify species uniqueness works as intended
-Last activity: 2026-02-05 — Completed Phase 15 (species_map.json + wild_encounters.json)
+Last activity: 2026-02-05 — Fixed explanation timing bug (shows before damage, all battle types)
 
 Progress: [████████████████████] 100% (all plans complete)
 
@@ -89,6 +89,7 @@ Recent decisions affecting current work:
 | Symbol duplication | Quiz_GetMasteryCount defined twice | Removed wrapper functions, use macros in quiz.h |
 | Implicit declaration | Functions called before definition | Added forward declarations |
 | Trainer progress display | Multi-question trainers showed mastery | Fixed Quiz_GetEncounterType to use isGymLeader flag |
+| Explanation timing | Explanation shown after damage (trainer-only) | New HandleExplanationWait state shows explanation before move execution |
 
 ### Pending Todos
 
@@ -108,7 +109,7 @@ None - Core code changes complete, ready for content expansion
 ## Session Continuity
 
 Last session: 2026-02-05
-Stopped at: Phase 15 code changes complete (15-03, 15-04)
+Stopped at: Explanation timing bug fix complete
 Resume file: None
 
 ### What's Working
@@ -123,6 +124,7 @@ Resume file: None
 - Route completion (25% rate when terrain species cleared)
 - Per-species questions (from species bank)
 - Multi-question trainer progress display (X/N for gym trainers, leaders, etc.)
+- Explanation timing (shown immediately after answer, before animations/damage)
 
 ### What's Next
 - Test gameplay with new species distribution
@@ -144,3 +146,21 @@ Code changes:
 - global.h: QuizSaveDataV2 simplified to V3 format
 - quiz.h: Global accessor declarations, removed section functions
 - quiz.c: Global mastery functions, species bank selection, forward declarations
+
+### Explanation Timing Fix (2026-02-05)
+
+**Problem:** Explanation text was displayed only in trainer battles, and only after damage resolution. In wild battles, if the opponent fainted, the explanation was never shown because the battle ended before the command menu reappeared.
+
+**Root cause:** The explanation display was triggered in `Quiz_OnCommandMenuShown()`, which only runs when the command menu appears. After KO, wild battles end immediately without showing the command menu again.
+
+**Solution:** Added intermediate battle controller state `HandleExplanationWait` that:
+1. Triggers immediately after answer selection (in `HandleInputChooseMove` and `HandleInputChooseTarget`)
+2. Displays explanation before move execution begins
+3. Waits for A button acknowledgment (supports R button scrolling)
+4. Proceeds with move execution only after acknowledgment
+
+**Files modified:**
+- `battle_controller_player.c`: Added HandleExplanationWait, modified move confirmation logic
+- `quiz_hooks.h/c`: Added QuizHooks_ShowPendingExplanation wrapper
+
+**Result:** Explanations now display for all encounter types (wild, capture, trainer) immediately after answer selection, before animations and damage.

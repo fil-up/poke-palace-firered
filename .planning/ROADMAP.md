@@ -111,7 +111,9 @@ Build a quiz-driven Pokémon FireRed ROM hack from current state (hardcoded sing
   1. Long questions paginate with "▼" indicator and button wait
   2. Correct answer shows explanation before battle ends
   3. Text doesn't overlap or clip
-**Plans**: (created by /gsd:plan-phase)
+**Plans**: 2 plans
+  - [x] 07-01-PLAN.md — Explanation display after correct answers
+  - [x] 07-02-SUMMARY.md — Explanation timing fix (show before damage, all battle types)
 
 ---
 
@@ -294,7 +296,7 @@ Key changes:
 | 4. Core Loop | 1/1 | ✓ Complete | 2026-01-24 |
 | 5. Capture Flow | 1/1 | ✓ Complete | 2026-01-24 |
 | 6. Encounter Filter | 1/1 | ✓ Complete | 2026-01-24 |
-| 7. UI Polish | 1/1 | ✓ Complete | 2026-01-24 |
+| 7. UI Polish | 2/2 | ✓ Complete | 2026-02-05 |
 | 8. Route 1 Content | 1/1 | ✓ Complete | 2026-01-24 |
 | 9. Viridian Forest | 1/1 | ✓ Complete | 2026-01-26 |
 | 10. Pewter Content | 1/1 | ✓ Complete | 2026-01-26 |
